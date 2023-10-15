@@ -6,3 +6,6 @@ b = Point(40, 60)
 a.setCoor(100, -100)
 tup = a.getCoor()
 print(tup)
+
+f = Point.gipo(3, 4)
+print(f)

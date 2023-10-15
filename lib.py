@@ -1,3 +1,4 @@
+from math import sqrt
 class Point:
     __x = 0
     __y = 0
@@ -16,3 +17,7 @@ class Point:
 
     def __del__(self):
         print(f'Объект {self} удалён')
+
+    @staticmethod
+    def gipo(x, y):
+        return sqrt(x**2 + y**2)
