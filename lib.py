@@ -1,23 +1,21 @@
 from math import sqrt
 class Point:
-    __x = 0
-    __y = 0
+    __MinCoor = 0
+    __MaxCoor = 7
+    @classmethod
+    def testCoor(cls, value):
+        return cls.__MinCoor <= value <= cls.__MaxCoor
 
-    def __init__(self, x=0, y=0):
-        self.__x = x
-        self.__y = y
-        print(f'object was been created: {self}')
+    def __init__(self, x, y):
+        if self.testCoor(x) and self.testCoor(y):
+            self.__x = x
+            self.__y = y
+        else:
+            raise Exception('no')
 
-    def setCoor(self, x, y):
-        self.__x = x
-        self.__y = y
 
-    def getCoor(self):
-        return self.__x, self.__y
-
-    def __del__(self):
-        print(f'Объект {self} удалён')
 
     @staticmethod
     def gipo(x, y):
         return sqrt(x**2 + y**2)
+
