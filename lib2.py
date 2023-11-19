@@ -28,3 +28,20 @@ class Teacher:
     @subject.setter
     def subject(self, value):
         self.__subject = value
+
+
+class Coor:
+    def __set_name(self, owner, name):
+        self._name = '_' + name
+
+        def __get_(self, instance, owner):
+            return getattr(instance, self.name)
+
+        def __set_(self, instance, value):
+            setattr(instance, self.name, value)
+
+
+class Point:
+    x = Coor()
+
+        
