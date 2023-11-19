@@ -21,5 +21,10 @@ class Teacher:
         if old > cls.__MaxAge or old < cls.__MinAge:
             raise Exception("Указан неверный возраст")
 
+    @property
+    def subject(self):
+        return self.__subject
 
-
+    @subject.setter
+    def subject(self, value):
+        self.__subject = value
