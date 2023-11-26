@@ -2,32 +2,24 @@ class Teacher:
     __MinAge = 20
     __MaxAge = 80
 
-    def __init__(self, old, name, subject):
-        self.__old = old
-        self.__name = name
-        self.__subject = subject
+    def __set_name__(self, owner, name):
+        self.name = '_' + name
 
-    def __setattr__(self, key, value):
-        if key == "_Teacher__old":
-            self.TestCoor(value)
-        if key == "_Teacher__name":
-            name = value
-            if len(name.split()) != 3:
-                raise Exception("Должно быть 3 слова")
-        object.__setattr__(self, key, value)
+    def __get_(self, instance, owner):
+        return getattr(instance, self.name)
 
-    @classmethod
-    def TestCoor(cls, old):
-        if old > cls.__MaxAge or old < cls.__MinAge:
-            raise Exception("Указан неверный возраст")
+    def __set_(self, instanse, value):
+        if self.name == "_fio":
+            if len(value.split()) != 3:
+                raise Exception("No")
+        setattr(instanse, self.name, value)
 
-    @property
-    def subject(self):
-        return self.__subject
 
-    @subject.setter
-    def subject(self, value):
-        self.__subject = value
+class Data:
+    fio = Teacher()
+
+    def __init__(self, fioValue):
+        self.fio = fioValue
 
 
 class Coor:
@@ -43,5 +35,3 @@ class Coor:
 
 class Point:
     x = Coor()
-
-        
